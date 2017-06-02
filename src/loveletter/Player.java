@@ -6,7 +6,10 @@ public class Player {
 	
 	String name;
 	boolean human;
+	int playerNumber;
 	int difficulty; // 0 = human, 1 = getDumbComputerMove(), 2 = getSmartComputerMove(), 3 = getHeuristicComputerMove()
+	boolean outOfRound;
+	boolean handmaidActive;
 	Card hand;
 	ArrayList<Card> discardPile;
 	int numTokensOfAffection;
@@ -15,26 +18,36 @@ public class Player {
 	public Player() {
 		name = "Player 1";
 		human = true;
+		playerNumber = 1;
+		difficulty = 0;
+		outOfRound = false;
+		handmaidActive = false;
 		hand = null;
 		discardPile = new ArrayList<Card>();
 		numTokensOfAffection = 0;
 		numOfTotalWins = 0;
 	}
 	
-	public Player(String n, boolean h, int diff) {
+	public Player(String n, boolean h, int num, int diff) {
 		name = n;
 		human = h;
+		playerNumber = num;
 		difficulty = diff;
+		outOfRound = false;
+		handmaidActive = false;
 		hand = null;
 		discardPile = new ArrayList<Card>();
 		numTokensOfAffection = 0;
 		numOfTotalWins = 0;
 	}
 
-	public Player(String n, boolean h, int diff, Card c, ArrayList<Card> discard, int tokens, int wins) {
+	public Player(String n, boolean h, int num, int diff, boolean out, boolean handmaid, Card c, ArrayList<Card> discard, int tokens, int wins) {
 		name = n;
 		human = h;
+		playerNumber = num;
 		difficulty = diff;
+		outOfRound = out;
+		handmaidActive = handmaid;
 		hand = c;
 		discardPile = discard;
 		numTokensOfAffection = tokens;
@@ -55,6 +68,34 @@ public class Player {
 	
 	public boolean isHuman() {
 		return human;
+	}
+	
+	public int getPlayerNumber() {
+		return playerNumber;
+	}
+	
+	public void setPlayerNumber(int num) {
+		playerNumber = num;
+	}
+	
+	public int getDifficulty() {
+		return difficulty;
+	}
+	
+	public boolean isOutOfRound() {
+		return outOfRound;
+	}
+	
+	public void setOutOfRound(boolean out) {
+		outOfRound = out;
+	}
+	
+	public boolean isHandmaidActive(){
+		return handmaidActive;
+	}
+	
+	public void setHandmaidActive(boolean active) {
+		handmaidActive = active;
 	}
 	
 	public Card getHand() {
@@ -83,6 +124,10 @@ public class Player {
 	
 	public void setNumTokens(int newNum) {
 		numTokensOfAffection = newNum;
+	}
+	
+	public void incrementNumTokens() {
+		numTokensOfAffection++;
 	}
 	
 }
