@@ -29,11 +29,7 @@ public class Play {
 			difficulty.add(diff);
 		}
 		LoveLetter game = new LoveLetter(numTotalPlayers, numHumanPlayers, difficulty);
-		game.shuffleAndDeal();
-		game.shuffleAndDeal();
-		game.shuffleAndDeal();
-		game.shuffleAndDeal();
-		//game.play();
+		game.play();
 	}
 
 }

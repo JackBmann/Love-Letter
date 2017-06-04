@@ -18,7 +18,7 @@ public class King extends Card {
 	@Override
 	public void discard(ArrayList<Player> players, Player discarder, ArrayList<Card> deck, Queue<Card> roundDeck, Card buriedCard) {
 		int targetNum = 0;
-		while(targetNum < 1 || targetNum > 4 || targetNum == discarder.getPlayerNumber()) {
+		while(targetNum < 1 || targetNum > players.size() || targetNum == discarder.getPlayerNumber()) {
 			System.out.println("Enter the number of the opposing player you would like to trade hands with (1-" + players.size() + "): ");
 			targetNum = scan.nextInt();
 			for(Player p: players)
@@ -33,9 +33,9 @@ public class King extends Card {
 		
 		System.out.println(discarder.getName() + " traded hands with " + targetPlayer.getName() + ".");
 		
-		Card temp = discarder.getHand();
+		Card hand = discarder.getHand();
 		discarder.setHand(targetPlayer.getHand());
-		targetPlayer.setHand(temp);
+		targetPlayer.setHand(hand);
 	}
 	
 }

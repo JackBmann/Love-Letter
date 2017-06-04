@@ -18,7 +18,7 @@ public class Baron extends Card {
 	@Override
 	public void discard(ArrayList<Player> players, Player discarder, ArrayList<Card> deck, Queue<Card> roundDeck, Card buriedCard) {
 		int targetNum = 0;
-		while(targetNum < 1 || targetNum > 4 || targetNum == discarder.getPlayerNumber()) {
+		while(targetNum < 1 || targetNum > players.size() || targetNum == discarder.getPlayerNumber()) {
 			System.out.println("Enter the number of the opposing player you would like to compare hands with (1-" + players.size() + "): ");
 			targetNum = scan.nextInt();
 			for(Player p: players)
@@ -33,7 +33,7 @@ public class Baron extends Card {
 		
 		if(targetPlayer.getHand().getValue() < discarder.getHand().getValue()) {
 			System.out.println(discarder.getName() + " compared hands with " + targetPlayer.getName() + ".  " + targetPlayer.getName() 
-								+ " had a " + targetPlayer.getHand().getName() + " is was lower than " + discarder.getName() + 
+								+ " had a " + targetPlayer.getHand().getName() + " which is lower than " + discarder.getName() + 
 								"'s card!  " + targetPlayer.getName() + " is eliminated from the round.");
 			
 			targetPlayer.setOutOfRound(true);
@@ -41,8 +41,8 @@ public class Baron extends Card {
 			targetPlayer.setHand(null);
 		}
 		else if (targetPlayer.getHand().getValue() > discarder.getHand().getValue()) {
-			System.out.println(discarder.getName() + " compared hands with " + targetPlayer.getName() + ".  " + targetPlayer.getName() 
-								+ " had a " + targetPlayer.getHand().getName() + " which is higher than " + discarder.getName() + 
+			System.out.println(discarder.getName() + " compared hands with " + targetPlayer.getName() + ".  " + discarder.getName() 
+								+ " had a " + discarder.getHand().getName() + " which is lower than " + targetPlayer.getName() + 
 								"'s card!  " + discarder.getName() + " is eliminated from the round.");
 			
 			discarder.setOutOfRound(true);

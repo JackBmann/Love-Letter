@@ -19,7 +19,7 @@ public class Prince extends Card {
 	@Override
 	public void discard(ArrayList<Player> players, Player discarder, ArrayList<Card> deck, Queue<Card> roundDeck, Card buriedCard) {
 		int targetNum = 0;
-		while(targetNum < 1 || targetNum > 4) {
+		while(targetNum < 1 || targetNum > players.size()) {
 			System.out.println("Enter the number of the player you would like to force to discard (1-" + players.size() + "): ");
 			targetNum = scan.nextInt();
 			for(Player p: players)

@@ -13,7 +13,7 @@ public class Player {
 	Card hand;
 	ArrayList<Card> discardPile;
 	int numTokensOfAffection;
-	int numOfTotalWins;
+	int numTotalWins;
 	
 	public Player() {
 		name = "Player 1";
@@ -25,7 +25,7 @@ public class Player {
 		hand = null;
 		discardPile = new ArrayList<Card>();
 		numTokensOfAffection = 0;
-		numOfTotalWins = 0;
+		numTotalWins = 0;
 	}
 	
 	public Player(String n, boolean h, int num, int diff) {
@@ -38,7 +38,7 @@ public class Player {
 		hand = null;
 		discardPile = new ArrayList<Card>();
 		numTokensOfAffection = 0;
-		numOfTotalWins = 0;
+		numTotalWins = 0;
 	}
 
 	public Player(String n, boolean h, int num, int diff, boolean out, boolean handmaid, Card c, ArrayList<Card> discard, int tokens, int wins) {
@@ -51,7 +51,7 @@ public class Player {
 		hand = c;
 		discardPile = discard;
 		numTokensOfAffection = tokens;
-		numOfTotalWins = wins;
+		numTotalWins = wins;
 	}
 	
 	public String toString() {
@@ -118,6 +118,13 @@ public class Player {
 		discardPile.clear();
 	}
 	
+	public int addTotalDiscardPileValue() {
+		int totalValue = 0;
+		for(Card c: discardPile)
+			totalValue += c.getValue();
+		return totalValue;
+	}
+	
 	public int getNumTokens() {
 		return numTokensOfAffection;
 	}
@@ -128,6 +135,18 @@ public class Player {
 	
 	public void incrementNumTokens() {
 		numTokensOfAffection++;
+	}
+	
+	public int getNumTotalWins() {
+		return numTotalWins;
+	}
+	
+	public void setNumTotalWins(int newNum) {
+		numTotalWins = newNum;
+	}
+	
+	public void incrementNumTotalWins() {
+		numTotalWins++;
 	}
 	
 }
